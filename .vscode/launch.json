@@ -1,0 +1,48 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch Chrome",
+			"request": "launch",
+			"type": "chrome",
+			"url": "http://localhost:4200",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "totvs_language_debug",
+			"request": "launch",
+			"name": "TOTVS Language Debug",
+			"program": "${command:AskForProgramName}",
+			"cwb": "${workspaceFolder}",
+			"smartclientBin": "C:/Users/carlos.simon/Documents/Totvs/Clientes/Coob/smartclient/smartclient.exe",
+			"isMultiSession": true,
+			"enableTableSync": true,
+			"enableMultiThread": true
+		}
+	],
+	"lastPrograms": [
+		{
+			"label": "SIGAMDI"
+		},
+		{
+			"label": "xxxx"
+		},
+		{
+			"label": "APSDU"
+		},
+		{
+			"label": "u_UpdateAdress"
+		},
+		{
+			"args": [],
+			"label": "u_CpfExist"
+		},
+		{
+			"label": "u_MinhaTela"
+		},
+		{
+			"label": "GetAllCustomers"
+		}
+	],
+	"lastProgramExecuted": "SIGAMDI"
+}

@@ -1,0 +1,54 @@
+<po-page-default p-title="Smartfat">
+    <po-widget class="po-lg-3 po-mb-1" p-title="Pedidos De Venda">
+        <div class="po-font-subtitle po-text-center">540</div>
+        <div class="po-text-center sample-container-dashboard">www.po.com.br</div>
+    </po-widget>
+
+    <po-widget class="po-lg-3 po-mb-1" p-title="Pedidos Encerrados">
+        <div class="po-font-subtitle po-text-center">300</div>
+        <div class="po-text-center sample-container-dashboard">https://po-ui.io</div>
+    </po-widget>
+    <po-widget class="po-lg-3 po-mb-1" p-title="Daily visitors">
+        <div class="po-font-subtitle po-text-center">540</div>
+        <div class="po-text-center sample-container-dashboard">www.po.com.br</div>
+    </po-widget>
+
+    <po-widget class="po-lg-3 po-mb-1" p-title="Most viewed page">
+        <div class="po-font-subtitle po-text-center">300 views</div>
+        <div class="po-text-center sample-container-dashboard">https://po-ui.io</div>
+    </po-widget>
+    <div class="po-row">
+        <div class="po-md-12 po-lg-6">
+            <div class="po-row">
+                <po-chart class="po-md-12 po-mt-2" p-title="Pedidos de venda ano a ano"
+                    [p-options]="options" [p-categories]="categories" [p-series]="participationByCountryInWorldExports"
+                    [p-type]="participationByCountryInWorldExportsType">
+                </po-chart>
+
+                <po-chart class="po-md-12 po-mt-2" p-title="Evolution of coffee and some competitors - %"
+                    [p-options]="optionsColumn" [p-categories]="categoriesColumn"
+                    [p-series]="evolutionOfCoffeeAndSomeCompetitors">
+                </po-chart>
+            </div>
+        </div>
+
+        <div class="po-md-12 po-lg-6">
+            <po-chart class="po-md-12 po-mt-2"
+                p-title="Principais estados de venda"
+                [p-height]="816" [p-categories]="consumptionPerCapitaItems" [p-series]="consumptionPerCapita"
+                [p-type]="consumptionPerCapitaType" [p-options]="consumptionPerCapitaOptions">
+            </po-chart>
+        </div>
+
+        <div class="po-md-12 po-lg-12">
+            <po-chart class="po-lg-6 po-mt-2" p-title="Top 5 coffee producing countries (in tons)"
+                [p-series]="coffeeProduction" (p-series-click)="searchMore($event)">
+            </po-chart>
+
+            <po-chart class="po-lg-6 po-mt-2" p-title="Top 5 Coffee Consuming Countries (in kg per capita)"
+                [p-series]="coffeeConsumption" [p-type]="coffeConsumingChartType"
+                (p-series-click)="showMeTheDates($event)">
+            </po-chart>
+        </div>
+    </div>
+</po-page-default>

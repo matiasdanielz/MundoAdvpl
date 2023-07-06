@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../Coob+/Desenvolvimento/ConsultaAssociados"
+		},
+		{
+			"name": "coob",
+			"path": "../../../gitlab.carlos/coob"
+		}
+	],
+	"settings": {
+		"totvsLanguageServer.welcomePage": false
+	}
+}
