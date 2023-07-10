@@ -9,13 +9,15 @@ import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { MenuComponent } from './menu/menu.component';
 import { QueryConverterComponent } from './query-converter/query-converter.component';
 import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExcelGeneratorComponent } from './excel-generator/excel-generator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    QueryConverterComponent
+    QueryConverterComponent,
+    ExcelGeneratorComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule.forRoot([]),
     PoTemplatesModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
