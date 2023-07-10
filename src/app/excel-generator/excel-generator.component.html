@@ -1,0 +1,17 @@
+<po-page-default p-title="Gerador de Excel">
+    <po-widget>
+        <po-info class="po-md-12 "
+            p-value="Insira no campo a ESQUERDA a tabela em que os campos serão pesquisados, e no campo a direita os campos que irão ser gerados no Excel'">
+        </po-info>
+        <po-divider></po-divider>
+        <div name="filters" class="po-row">
+            <po-input class="po-md-4" p-label="Tabela" p-placeholder="SA1990, SA2990, SA3990..."></po-input>
+            <po-input class="po-md-4" p-label="Campos" p-placeholder="A1_NOME, A1_CGC, A1_MUN..." [(ngModel)]="disclaimer.value"></po-input>
+            <po-button class="po-md-4 searchButton" p-kind="primary" p-label="Adicionar" (p-click)="addDisclaimer()"></po-button>
+        </div>
+        <po-disclaimer-group [p-disclaimers]="disclaimers"
+            p-title="Campos que ira adicionar" (p-change)="changeEvent('p-change')">
+        </po-disclaimer-group>
+        <po-textarea class="po-md-12" [p-rows]="12"></po-textarea>
+    </po-widget>
+</po-page-default>
