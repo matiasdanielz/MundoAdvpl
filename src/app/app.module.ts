@@ -6,16 +6,15 @@ import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
-import { MenuComponent } from './menu/menu.component';
 import { QueryConverterComponent } from './query-converter/query-converter.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExcelGeneratorComponent } from './excel-generator/excel-generator.component';
+import { PoCodeEditorModule } from '@po-ui/ng-code-editor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     QueryConverterComponent,
     ExcelGeneratorComponent
   ],
@@ -27,7 +26,8 @@ import { ExcelGeneratorComponent } from './excel-generator/excel-generator.compo
     RouterModule.forRoot([]),
     PoTemplatesModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PoCodeEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

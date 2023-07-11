@@ -1,5 +1,4 @@
-import { Component, OnInit,  } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild,  } from '@angular/core';
 import { PoDisclaimer } from '@po-ui/ng-components';
 
 
@@ -9,6 +8,7 @@ import { PoDisclaimer } from '@po-ui/ng-components';
   styleUrls: ['./excel-generator.component.css']
 })
 export class ExcelGeneratorComponent implements OnInit {
+  @ViewChild("codeEditor", {static: true}) codeEditor: any;
 
   public isOOGenerator: boolean = true;
   public generatorContent: string = "";
@@ -19,6 +19,7 @@ export class ExcelGeneratorComponent implements OnInit {
 
   public event: string = '';
 
+  public windowHeight: string = (window.innerHeight - window.innerHeight / 2.5).toString();
 
   ngOnInit(): void {
     this.restore();
@@ -28,6 +29,8 @@ export class ExcelGeneratorComponent implements OnInit {
     this.disclaimers = [...this.disclaimers, this.disclaimer];
 
     this.disclaimer = { value: undefined };
+
+    console.log(this.codeEditor);
 
     if(this.isOOGenerator){
       this.modifyOOGenerator();
@@ -91,8 +94,8 @@ export class ExcelGeneratorComponent implements OnInit {
     + "\nendclass"
 
     + "\n\nmethod New() class ExcelModel"
-    + '\n    ::cDir      := "C:\EXCEL"'
-    + '\n    ::cFilePath := "C:\EXCEL\excel.CSV"'
+    + '\n    ::cDir      := "C:/EXCEL"'
+    + '\n    ::cFilePath := "C:/EXCEL/excel.CSV"'
     + '\n    return self'
 
     + '\n\nmethod SetHeader(cHeader) class ExcelModel'
@@ -155,9 +158,9 @@ export class ExcelGeneratorComponent implements OnInit {
     this.generatorContent = 'USER FUNCTION GerarExcel()'
     + '\n    local cBreakLin := Chr(13) + Chr(10)'
     + '\n    local cHeader   := "Filial;Numero do Titulo;Tipo do Titulo;Codigo da natureza;Codigo do Fornecedor;Nome do fornecedor;Data de Emissao do Titulo;Vencimento real do Titulo;Valor do Titulo;Historico do Titulo"'
-    + '\n    local cTxtPath  := "C:\EXCEL\excel.CSV"'
+    + '\n    local cTxtPath  := "C:/EXCEL/excel.CSV"'
     + '\n    local cTxtCont  := ""'
-    + '\n    local cDir := "C:\EXCEL"'
+    + '\n    local cDir := "C:/EXCEL"'
 
     + '\n\n    cTxtCont := cHeader'
 

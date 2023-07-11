@@ -10,12 +10,12 @@
         </div>
         <div name="queries" class="po-row">
             <div name="request" class="po-md-6">
-                <po-textarea name="textarea" [(ngModel)]="queryRequest" p-label="Query a ser convertida" [p-rows]="22" p-placeholder="SELECT A1_NOME FROM SA1990">
-                </po-textarea>
+                <po-code-editor class="po-md-12" name="textarea" p-label="Resposta" [p-height]="windowHeight" p-theme="vs-dark" p-language="sql" [(ngModel)]="queryRequest">
+                </po-code-editor>
             </div>
             <div name="response" class="po-md-6">
-                <po-textarea name="textarea" p-label="Resposta" [(ngModel)]="queryResponse" [p-rows]="22" [p-readonly]="true">
-                </po-textarea>
+                <po-code-editor class="po-md-12" name="textarea" p-label="Resposta" [p-height]="windowHeight" p-theme="vs-dark" p-language="c" [(ngModel)]="queryResponse" [p-readonly]="true">
+                </po-code-editor>
             </div>
         </div>
     </po-widget>
