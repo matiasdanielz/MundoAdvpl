@@ -5,12 +5,13 @@
         </po-info>
         <po-divider></po-divider>
         <div name="filters" class="po-row">
-            
-            <po-input #aliasInput class="po-md-3" p-label="Tabela" p-placeholder="SA1990, SA2990, SA3990..." [(ngModel)]="tableToGenerate" p-required="true"
+            <po-input #aliasInput class="po-md-6" p-label="Tabela" p-placeholder="SA1990, SA2990, SA3990..." [(ngModel)]="tableToGenerate" p-required="true"
+            [p-show-required]="true"></po-input>
+            <po-switch class="po-md-6" name="switch" p-label="Orientado a objetos" p-label-off="Não" p-label-on="Sim" [(ngModel)]="isOOGenerator"> </po-switch>
+            <po-input class="po-md-3" p-label="Titulo" p-placeholder="Nome, Cpf, Municipio..." [(ngModel)]="fieldTitle" p-required="true"
             [p-show-required]="true"></po-input>
             <po-input class="po-md-3" p-label="Campo" p-placeholder="A1_NOME, A1_CGC, A1_MUN..." [(ngModel)]="disclaimer.value" p-required="true"
             [p-show-required]="true"></po-input>
-            <po-switch class="po-md-3" name="switch" p-label="Orientado a objetos" p-label-off="Não" p-label-on="Sim" [(ngModel)]="isOOGenerator"> </po-switch>
             <po-button class="po-md-3 searchButton" p-kind="primary" p-label="Adicionar" (p-click)="addDisclaimer()" ></po-button>
         </div>
         <po-disclaimer-group class="po-md-12" [p-disclaimers]="disclaimers"

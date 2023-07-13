@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExcelGeneratorComponent } from './excel-generator/excel-generator.component';
 import { PoCodeEditorModule } from '@po-ui/ng-code-editor';
+import { ReportGeneratorComponent } from './report-generator/report-generator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QueryConverterComponent,
-    ExcelGeneratorComponent
+    ExcelGeneratorComponent,
+    ReportGeneratorComponent
   ],
   imports: [
     BrowserModule,

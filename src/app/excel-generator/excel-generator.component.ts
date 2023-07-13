@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild,  } from '@angular/core';
-import { PoDisclaimer } from '@po-ui/ng-components';
+import { PoDisclaimer, PoNotification, PoNotificationService } from '@po-ui/ng-components';
 
 
 @Component({
@@ -14,23 +14,37 @@ export class ExcelGeneratorComponent implements OnInit {
   public generatorContent: string = "";
   public tableToGenerate: string = "";
 
+  public fieldTitle: string = '';
+  public filedsTitles: Array<string> = []; 
+
   public disclaimer!: PoDisclaimer;
   public disclaimers: Array<PoDisclaimer> = [{ value: 'disclaimer' }];
 
   public event: string = '';
 
-  public windowHeight: string = (window.innerHeight - window.innerHeight / 2.5).toString();
+  public windowHeight: string = (window.innerHeight - window.innerHeight / 2).toString();
 
   ngOnInit(): void {
     this.restore();
   }
 
+  constructor(private poNotification: PoNotificationService){
+
+  }
+
   public addDisclaimer() {
+    if(this.disclaimer.value == undefined || this.fieldTitle == "" || this.tableToGenerate == ""){
+      this.poNotification.error("Preencha os campos obrigatorios")
+      return;
+    }
+
+    this.disclaimer.label = this.fieldTitle;
+
     this.disclaimers = [...this.disclaimers, this.disclaimer];
+    this.filedsTitles.push(this.fieldTitle);
 
     this.disclaimer = { value: undefined };
-
-    console.log(this.codeEditor);
+    this.fieldTitle = "";
 
     if(this.isOOGenerator){
       this.modifyOOGenerator();
@@ -65,9 +79,13 @@ export class ExcelGeneratorComponent implements OnInit {
 
     + "\n\nstatic method GenerateExcel() class ExcelController"  
     + "\n   local oExcel := JsonObject():New()"
-    + '\n   local cHeader := "Nome;Endereço"'
+    + '\n   local cHeader := ""\n'
 
-    + "\n\n   oExcel := ExcelModel():New()"
+    this.disclaimers.forEach(item => {
+      this.generatorContent += '\n   cHeader += "' + item.label + '"'
+    })
+
+    this.generatorContent += "\n\n   oExcel := ExcelModel():New()"
     + "\n   oExcel:SetHeader(cHeader)"
 
     + "\n\n   if oExcel:DirExist()"
@@ -157,12 +175,16 @@ export class ExcelGeneratorComponent implements OnInit {
   public modifyProceduralGenerator(){
     this.generatorContent = 'USER FUNCTION GerarExcel()'
     + '\n    local cBreakLin := Chr(13) + Chr(10)'
-    + '\n    local cHeader   := "Filial;Numero do Titulo;Tipo do Titulo;Codigo da natureza;Codigo do Fornecedor;Nome do fornecedor;Data de Emissao do Titulo;Vencimento real do Titulo;Valor do Titulo;Historico do Titulo"'
     + '\n    local cTxtPath  := "C:/EXCEL/excel.CSV"'
     + '\n    local cTxtCont  := ""'
     + '\n    local cDir := "C:/EXCEL"'
+    + '\n    local cHeader   := ""\n'
 
-    + '\n\n    cTxtCont := cHeader'
+    this.disclaimers.forEach(item => {
+      this.generatorContent += '\n    cHeader += "' + item.label + '"'
+    })
+
+    this.generatorContent += '\n\n    cTxtCont := cHeader'
 
     + '\n\n    BeginSQL Alias "SQL_YOURALIAS"'
     + '\n         SELECT'
